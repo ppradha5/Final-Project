@@ -17,7 +17,7 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 # Load emotion model
 print("Loading emotion model...")
-emotion_model = tf.keras.models.load_model('emotion_model_best.h5')
+emotion_model = tf.keras.models.load_model('emotion_model.h5')
 
 # Load emotion class indices
 with open('class_indices.json', 'r') as f:
