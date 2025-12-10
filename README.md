@@ -14,7 +14,7 @@ The models are trained on facial image datasets and can perform inference in rea
 
 | Model | Task | Accuracy | Test Samples |
 |-------|------|----------|--------------|
-| CKmodel_best.h5 | Emotion Detection | 47.19% | 7,178 |
+| emotion_model.h5 | Emotion Detection | 47.19% | 7,178 |
 | gender_model_best.h5 | Gender Detection | ~85-90% | 58,658 |
 
 ### Emotion Class Distribution
@@ -50,26 +50,22 @@ python main.py
 
 ### Core Files
 - **`main.py`** - Main entry point for live webcam detection
-- **`test_on_images.py`** - Static image testing script
 - **`test_combined_detection.py`** - Combined emotion+gender detection implementation
-
-### Model Training (Optional)
-- **`model.py`** - Emotion model training script
+- **`emotion_model.py`** - Emotion model training script
 - **`train_gender_improved.py`** - Gender model training script
 - **`evaluate_model.py`** - Evaluation script for emotion model
 
 ### Pre-trained Models
-- **`CKmodel_best.h5`** - Trained emotion detection model
+- **`emotion_model.h5`** - Trained emotion detection model
 - **`gender_model_best.h5`** - Trained gender detection model
 - **`class_indices.json`** - Emotion class mapping
 - **`gender_class_indices.json`** - Gender class mapping
 
 ### Data
-- **`train/`** - Training images organized by emotion (7 subdirectories)
-- **`test/`** - Test images organized by emotion (7 subdirectories)
-- **`Training/`** - Gender training data (male/, female/)
-- **`Validation/`** - Gender validation data (male/, female/)
-- **`faces_48/`** - 48x48 preprocessed emotion faces
+- **`train_emotion/`** - Training images organized by emotion (7 subdirectories)
+- **`test_emotion/`** - Test images organized by emotion (7 subdirectories)
+- **`Training_gender/`** - Gender training data (male/, female/)
+- **`Validation_gender/`** - Gender validation data (male/, female/)
 
 ## 🏗️ Architecture
 
@@ -147,17 +143,17 @@ Removed in webcam-only mode.
 
 ### Train Emotion Model
 ```bash
-python model.py
+python emotion_model.py
 ```
-- Requires: `train/` and `test/` directories with emotion subdirectories
-- Output: `CKmodel_best.h5` (best model saved automatically)
+- Requires: `train_emotion/` and `test_emotion/` directories with emotion subdirectories
+- Output: `emotion_model.h5` (best model saved automatically)
 - Training time: ~10-20 minutes
 
 ### Train Gender Model
 ```bash
 python train_gender_improved.py
 ```
-- Requires: `Training/` and `Validation/` directories with gender subdirectories
+- Requires: `Training_gender/` and `Validation_gender/` directories with gender subdirectories
 - Output: `gender_model_best.h5`
 - Training time: ~5-10 minutes
 
