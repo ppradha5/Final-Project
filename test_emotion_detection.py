@@ -5,7 +5,7 @@ import json
 
 # Load the trained model
 print("Loading model...")
-model = tf.keras.models.load_model('CKmodel_best.h5')
+model = tf.keras.models.load_model('emotion_model.h5')
 
 # Load class indices
 with open('class_indices.json', 'r') as f:
